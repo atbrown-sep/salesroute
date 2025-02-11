@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capture Geolocation</title>
+</head>
+<body>
+
+  <!-- Button to trigger location capture -->
+  <button onclick="getLocation()">Get My Location</button>
+
+  <!-- Embed Cognito Form -->
+  <iframe src="https://www.cognitoforms.com/seprod/salesroute" width="100%" height="604" frameborder="0" id="formFrame"></iframe>
+
+  <script>
+    // Function to get user's current geolocation
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+
+    // Function to show position and populate hidden fields in the embedded form
+    function showPosition(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      // Access the embedded form and set the hidden fields (latitude and longitude)
+      const form = document.getElementById("formFrame").contentWindow.document;
+      form.querySelector("#latitude").value = latitude;
+      form.querySelector("#longitude").value = longitude;
+
+      alert(`Location captured: Latitude = ${latitude}, Longitude = ${longitude}`);
+    }
+
+    // Function to handle geolocation errors
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          alert("User denied the request for Geolocation.");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("Location information is unavailable.");
+          break;
+        case error.TIMEOUT:
+          alert("The request to get user location timed out.");
+          break;
+        case error.UNKNOWN_ERROR:
+          alert("An unknown error occurred.");
+          break;
+      }
+    }
+  </script>
+
+</body>
+</html>
