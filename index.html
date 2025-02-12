@@ -23,15 +23,15 @@
       }
     }
 
-    // Function to show position and update iframe's URL with geolocation values
+   // Function to show position and update iframe's URL with geolocation values
     function showPosition(position) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
-      // Update iframe URL with geolocation data as query parameters
+      // Update iframe URL with geolocation data as query parameters (using Field Names)
       const iframe = document.getElementById("formFrame");
-      const newSrc = `https://www.cognitoforms.com/seprod/salesroute?Latitude="35.77"&Longitude="-122.43"`;
-      iframe.src = newSrc;
+      const newSrc = `https://www.cognitoforms.com/seprod/salesroute?Latitude=${latitude}&Longitude=${longitude}`;
+      iframe.src = newSrc;  // This reloads the iframe with the updated URL
 
       // Optional: Show an alert or confirmation message
       alert(`Location captured: Latitude = ${latitude}, Longitude = ${longitude}`);
