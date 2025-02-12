@@ -11,7 +11,7 @@
   <button onclick="getLocation()">Get My Location</button>
 
   <!-- Embed Cognito Form with parameters -->
-  <iframe id="formFrame" src="https://www.cognitoforms.com/seprod/salesroute?latitude=&longitude=" width="100%" height="1000" frameborder="0"></iframe>
+  <iframe id="formFrame" src="https://www.cognitoforms.com/seprod/salesroute?Latitude=&Longitude=" width="100%" height="1000" frameborder="0"></iframe>
 
   <script>
     // Function to get user's current geolocation
@@ -30,7 +30,7 @@
 
       // Update iframe URL with geolocation data as query parameters
       const iframe = document.getElementById("formFrame");
-      const newSrc = `https://www.cognitoforms.com/seprod/salesroute?latitude=${latitude}&longitude=${longitude}`;
+      const newSrc = `https://www.cognitoforms.com/seprod/salesroute?Latitude=${latitude}&Longitude=${longitude}`;
       iframe.src = newSrc;
 
       // Optional: Show an alert or confirmation message
