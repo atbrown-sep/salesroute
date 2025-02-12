@@ -3,11 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capture Geolocation</title>
+  <title>Sales Route Form</title>
+  <style>
+    button {
+      background-color: green;
+      color: white;
+      font-size: 18px; 
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;  /* Smooth transition for background change */
+    }
+
+    button:hover {
+      background-color: darkgreen;
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- Button to trigger location capture and update the iframe -->
+  <p>Please click this button to populate location fields.</p>
   <button onclick="getLocation()">Get My Location</button>
 
   <!-- Embed Cognito Form with parameters -->
