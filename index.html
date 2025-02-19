@@ -25,14 +25,14 @@
 <body>
 
   <!-- Button to trigger location capture and update the iframe -->
-  <h4>Please click this button to populate location fields.</h4>
+  <h4>Please click this button to populate location fields within the form.</h4>
   <button onclick="getLocation()">Get My Location</button>
 
   <!-- Embed Cognito Form with parameters -->
   <iframe id="formFrame" src="https://www.cognitoforms.com/seprod/salesroute?Latitude=&Longitude=" width="100%" height="1000" frameborder="0"></iframe>
 
   <script>
-    // Function to get user's current geolocation
+    //To get user's current geolocation
     function getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -41,21 +41,21 @@
       }
     }
 
-   // Function to show position and update iframe's URL with geolocation values
+   //Show position and update iframe's URL with geolocation values
     function showPosition(position) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
-      // Update iframe URL with geolocation data as query parameters (using Field Names)
+      //Update iframe URL with geolocation data - code obtained from Cognito's websie
       const iframe = document.getElementById("formFrame");
       const newSrc = `https://www.cognitoforms.com/seprod/salesroute?entry={"Latitude":"${latitude}","Longitude":"${longitude}"}`;
-      iframe.src = newSrc;  // This reloads the iframe with the updated URL
+      iframe.src = newSrc;
 
-      // Optional: Show an alert or confirmation message
+      //Confirmation message
       alert(`LOCATION SUCCESSFULLY CAPTURED: Latitude = ${latitude}, Longitude = ${longitude}`);
     }
 
-    // Function to handle geolocation errors
+    //Handle errors
     function showError(error) {
       switch(error.code) {
         case error.PERMISSION_DENIED:
